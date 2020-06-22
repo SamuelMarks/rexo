@@ -21,10 +21,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 if(MSVC)
     add_compile_options(/W4)
 else()
+    #add_compile_options(-E)
     add_compile_options(
         -Wpedantic -Wall -Wextra -Waggregate-return -Wcast-align -Wcast-qual
         -Wconversion -Wfloat-equal -Wpointer-arith -Wshadow -Wstrict-overflow=5
-        -Wswitch -Wswitch-default -Wundef -Wunreachable-code -Wwrite-strings)
+        -Wswitch -Wswitch-default -Wundef -Wunreachable-code -Wwrite-strings
+    )
+    #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -E")
 endif()
 
 if(UNIX)

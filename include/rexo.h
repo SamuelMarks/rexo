@@ -65,7 +65,11 @@ typedef char rx__invalid_uint32_type[sizeof(rx_uint32) == 4 ? 1 : -1];
 #if defined(RX_UINT64_TYPE)
     typedef RX_UINT64_TYPE rx_uint64;
 #else
-    typedef unsigned long long rx_uint64;
+    #if !defined(__cplusplus) && __STDC_VERSION__ >= 199901L
+        typedef unsigned long long rx_uint64;
+    #else
+        typedef unsigned long rx_uint64;
+    #endif
 #endif
 typedef char rx__invalid_uint64_type[sizeof(rx_uint64) == 8 ? 1 : -1];
 
